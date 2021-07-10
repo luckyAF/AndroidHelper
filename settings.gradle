@@ -1,5 +1,5 @@
-rootProject.name = "AndroidHelper"
+include ':BaseAndroid'
 include ':app'
+rootProject.name = "AndroidHelper"
 includeBuild("VersionPlugin")
 
-include ':BaseAndroid'

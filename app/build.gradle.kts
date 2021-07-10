@@ -12,8 +12,8 @@ android {
 
     defaultConfig {
         applicationId = BuildConfig.applicationId
-        minSdkVersion = BuildConfig.minSdkVersion
-        targetSdkVersion = BuildConfig.targetSdkVersion
+        minSdkVersion(BuildConfig.minSdkVersion)
+        targetSdkVersion(BuildConfig.targetSdkVersion)
         versionCode =BuildConfig.versionCode
         versionName =BuildConfig.versionName
         testInstrumentationRunner =BuildConfig.testInstrumentationRunner
@@ -27,7 +27,7 @@ android {
         }
     }
     buildFeatures {
-        viewBinding true
+        viewBinding = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -40,6 +40,7 @@ android {
 }
 
 dependencies {
+    implementation(project(mapOf("path" to ":BaseAndroid")))
     implementation(BuildConfig.kt_stdlib)
     implementation(AndroidX.coreKtx)
     implementation(AndroidX.appcompat)

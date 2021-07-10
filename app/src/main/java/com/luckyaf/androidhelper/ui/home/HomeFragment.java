@@ -15,11 +15,15 @@ import androidx.lifecycle.ViewModelProvider;
 import com.luckyaf.androidhelper.R;
 import com.luckyaf.androidhelper.databinding.FragmentHomeBinding;
 
+/**
+ * @author xiangzhongfei
+ */
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
 
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
