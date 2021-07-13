@@ -1,4 +1,4 @@
-package com.luckyaf.baseandroid.ui.page;
+package com.luckyaf.smartandroid.ui.page;
 
 /**
  * 类描述：

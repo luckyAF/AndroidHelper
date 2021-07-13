@@ -1,4 +1,4 @@
-package com.luckyaf.baseandroid.callback;
+package com.luckyaf.smartandroid.callback;
 
 import android.content.Intent;
 

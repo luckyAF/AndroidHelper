@@ -1,4 +1,4 @@
-package com.luckyaf.baseandroid.domain;
+package com.luckyaf.smartandroid.domain;
 
 /**
  * Use cases are the entry points to the domain layer.

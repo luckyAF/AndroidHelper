@@ -1,4 +1,4 @@
-package com.luckyaf.baseandroid.action;
+package com.luckyaf.smartandroid.action;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;

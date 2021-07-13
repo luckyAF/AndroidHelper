@@ -1,4 +1,4 @@
-package com.luckyaf.baseandroid.constants;
+package com.luckyaf.smartandroid.constants;
 
 /**
  * 类描述：

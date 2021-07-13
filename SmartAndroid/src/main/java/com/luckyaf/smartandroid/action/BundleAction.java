@@ -1,4 +1,4 @@
-package com.luckyaf.baseandroid.action;
+package com.luckyaf.smartandroid.action;
 
 import android.os.Bundle;
 import android.os.Parcelable;

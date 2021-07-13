@@ -1,9 +1,9 @@
-package com.luckyaf.baseandroid.ui.page;
+package com.luckyaf.smartandroid.ui.widget;
 
 /**
  * 类描述：
  *
  * @author Created by luckyAF on 2021/7/11
  */
-class BaseFragment {
+class BaseDialog {
 }

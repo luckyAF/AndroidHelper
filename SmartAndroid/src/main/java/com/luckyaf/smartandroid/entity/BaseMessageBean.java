@@ -1,4 +1,4 @@
-package com.luckyaf.baseandroid.entity;
+package com.luckyaf.smartandroid.entity;
 
 /**
  * 类描述：基础消息

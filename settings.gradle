@@ -1,6 +1,4 @@
-include ':BaseAndroid'
 include ':app'
 rootProject.name = "AndroidHelper"
 includeBuild("VersionPlugin")
-
 include ':SmartAndroid'

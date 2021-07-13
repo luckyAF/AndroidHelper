@@ -1,16 +1,16 @@
-package com.luckyaf.baseandroid.ui.page;
+package com.luckyaf.smartandroid.ui.page;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.SparseArray;
 
-import com.luckyaf.baseandroid.action.KeyboardAction;
-import com.luckyaf.baseandroid.callback.OnActivityCallback;
+
+import com.luckyaf.smartandroid.action.KeyboardAction;
+import com.luckyaf.smartandroid.callback.OnActivityCallback;
 
 import java.util.Random;
 
 import androidx.annotation.LayoutRes;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 

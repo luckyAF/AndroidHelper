@@ -40,7 +40,7 @@ android {
 }
 
 dependencies {
-    implementation(project(mapOf("path" to ":BaseAndroid")))
+    implementation(project(mapOf("path" to ":SmartAndroid")))
     implementation(BuildConfig.kt_stdlib)
     implementation(AndroidX.coreKtx)
     implementation(AndroidX.appcompat)
