@@ -12,8 +12,20 @@ public class CommonPageEvent {
      * 用于区分事件是发送给谁的
      */
     protected String tag = "";
+
+    /**
+     * 返回TAG
+     * @return event 的 tag
+     */
     public String getTag() {
         return tag;
+    }
+    /**
+     * 不需要校验TAG
+     * @return 是否需要校验TAG
+     */
+    public boolean needCheckTag(){
+        return !tag.isEmpty();
     }
 
     /**
