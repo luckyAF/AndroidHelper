@@ -5,7 +5,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.20")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.31")
     }
 }
 plugins {
@@ -21,8 +21,8 @@ repositories {
 
 dependencies {
     compileOnly(gradleApi())
-    compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.20")
-    compileOnly("com.android.tools.build:gradle:4.1.1")
+    compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.31")
+    compileOnly("com.android.tools.build:gradle:4.2.2")
 }
 kotlinDslPluginOptions {
     experimentalWarning.set(false)

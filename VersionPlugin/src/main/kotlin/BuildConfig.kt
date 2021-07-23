@@ -15,7 +15,7 @@ object BuildConfig {
     var versionCode = 1
 
     var gradle_version = "4.1.1"
-    var kotlin_version = "1.4.20"
+    var kotlin_version = "1.4.31"
     val kt_stdlib get()= "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     object Kotlin {
