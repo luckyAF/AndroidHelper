@@ -6,6 +6,7 @@ plugins {
     id("com.github.dcendents.android-maven")
     id("com.luckyaf.plugin") apply false
 }
+group= "com.luckyaf.androidhelper"
 
 android{
     compileSdk = BuildConfig.compileSdkVersion
