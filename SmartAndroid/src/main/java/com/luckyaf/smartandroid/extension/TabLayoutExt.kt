@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.view.Gravity
 import android.widget.TextView
+import com.google.android.material.tabs.TabLayout
 
 /**
  * 类描述：

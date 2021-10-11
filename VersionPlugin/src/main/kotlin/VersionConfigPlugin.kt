@@ -91,7 +91,6 @@ class VersionConfigPlugin : Plugin<Project> {
     private fun Project.configCommonPlugin() {
         plugins.apply("kotlin-android")
         plugins.apply("kapt")
-        plugins.apply("kotlin-android-extensions")
     }
 
     /**
