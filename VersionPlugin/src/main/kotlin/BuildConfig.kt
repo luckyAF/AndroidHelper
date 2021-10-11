@@ -11,7 +11,7 @@ object BuildConfig {
     const val applicationId ="com.luckyaf.androidhelper"
     const val testInstrumentationRunner="androidx.test.runner.AndroidJUnitRunner"
 
-    var versionName = "1.0"
+    var versionName = "0.0.1"
     var versionCode = 1
 
     var gradle_version = "4.1.1"
