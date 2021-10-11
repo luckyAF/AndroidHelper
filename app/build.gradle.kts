@@ -7,13 +7,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion(BuildConfig.compileSdkVersion)
-    buildToolsVersion(BuildConfig.buildToolsVersion)
+    compileSdk = BuildConfig.compileSdkVersion
+    buildToolsVersion = BuildConfig.buildToolsVersion
 
     defaultConfig {
         applicationId = BuildConfig.applicationId
-        minSdkVersion(BuildConfig.minSdkVersion)
-        targetSdkVersion(BuildConfig.targetSdkVersion)
+        minSdk = BuildConfig.minSdkVersion
+        targetSdk = BuildConfig.targetSdkVersion
         versionCode =BuildConfig.versionCode
         versionName =BuildConfig.versionName
         testInstrumentationRunner =BuildConfig.testInstrumentationRunner
@@ -21,11 +21,6 @@ android {
         multiDexEnabled = true
     }
 
-    buildTypes {
-        getByName("release") {
-            consumerProguardFiles("proguard-rules.pro")
-        }
-    }
     buildFeatures {
         viewBinding = true
     }

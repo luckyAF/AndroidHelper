@@ -11,11 +11,11 @@ object BuildConfig {
     const val applicationId ="com.luckyaf.androidhelper"
     const val testInstrumentationRunner="androidx.test.runner.AndroidJUnitRunner"
 
-    var versionName = "0.0.1"
-    var versionCode = 1
+    var versionName = "1.0.1"
+    var versionCode = 2
 
     var gradle_version = "4.1.1"
-    var kotlin_version = "1.4.31"
+    var kotlin_version = "1.5.21"
     val kt_stdlib get()= "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     object Kotlin {

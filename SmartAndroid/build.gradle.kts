@@ -3,18 +3,17 @@ plugins {
     kotlin("android")
     kotlin("kapt")
     kotlin("android.extensions")
+    id("com.github.dcendents.android-maven")
     id("com.luckyaf.plugin") apply false
 }
 
 android{
-    compileSdkVersion(BuildConfig.compileSdkVersion)
-    buildToolsVersion(BuildConfig.buildToolsVersion)
+    compileSdk = BuildConfig.compileSdkVersion
+    buildToolsVersion = BuildConfig.buildToolsVersion
 
     defaultConfig{
-        minSdkVersion(BuildConfig.minSdkVersion)
-        targetSdkVersion(BuildConfig.targetSdkVersion)
-        versionCode =BuildConfig.versionCode
-        versionName =BuildConfig.versionName
+        minSdk = BuildConfig.minSdkVersion
+        targetSdk = BuildConfig.targetSdkVersion
 
         testInstrumentationRunner =BuildConfig.testInstrumentationRunner
 
