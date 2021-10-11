@@ -24,6 +24,7 @@ import androidx.fragment.app.FragmentManager;
  *
  * @author Created by luckyAF on 2021/7/11
  */
+@SuppressWarnings("unused")
 public abstract class BaseDialogFragment extends DialogFragment {
 
     public   String TAG = getClass().getSimpleName();
@@ -31,7 +32,7 @@ public abstract class BaseDialogFragment extends DialogFragment {
 
     /**
      * 获取布局id
-     * @return
+     * @return id
      */
     protected abstract int getLayoutRes();
 
@@ -53,18 +54,21 @@ public abstract class BaseDialogFragment extends DialogFragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //去除Dialog默认头部
         Dialog dialog = getDialog();
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCanceledOnTouchOutside(isCancelableOutside());
-        if (dialog.getWindow() != null && getDialogAnimationRes() > 0) {
-            dialog.getWindow().setWindowAnimations(getDialogAnimationRes());
+        if(dialog!=null){
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setCanceledOnTouchOutside(isCancelableOutside());
+            if (dialog.getWindow() != null && getDialogAnimationRes() > 0) {
+                dialog.getWindow().setWindowAnimations(getDialogAnimationRes());
+            }
+            if (getOnKeyListener() !=null){
+                dialog.setOnKeyListener(getOnKeyListener());
+            }
         }
-        if (getOnKeyListener() !=null){
-            dialog.setOnKeyListener(getOnKeyListener());
-        }
+
     }
 
     protected DialogInterface.OnKeyListener getOnKeyListener() {
@@ -141,12 +145,12 @@ public abstract class BaseDialogFragment extends DialogFragment {
     }
 
     //获取设备屏幕宽度
-    public final static  int getScreenWidth(Context context) {
+    public  static  int getScreenWidth(Context context) {
         return context.getResources().getDisplayMetrics().widthPixels;
     }
 
     //获取设备屏幕高度
-    public final static  int getScreenHeight(Context context) {
+    public  static  int getScreenHeight(Context context) {
         return context.getResources().getDisplayMetrics().heightPixels;
     }
 }

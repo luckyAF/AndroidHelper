@@ -3,10 +3,10 @@ package com.luckyaf.smartandroid.mvi;
 import android.os.Bundle;
 import android.os.Looper;
 
+import com.kunminx.architecture.ui.callback.UnPeekLiveData;
 import com.luckyaf.smartandroid.entity.CommonMessageBean;
-import com.luckyaf.smartandroid.entity.ProtectedUnPeekLiveData;
+
 import androidx.annotation.NonNull;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 /**
  * 类描述：
@@ -25,16 +25,18 @@ public abstract class BaseModel<I extends IIntent, S extends IViewState> extends
     /**
      * 页面数据
      */
-    private final MutableLiveData<S> viewState = new MutableLiveData<>();
+    private final UnPeekLiveData<S> viewState =
+            new UnPeekLiveData.Builder<S>()
+            .setAllowNullValue(true)
+            .create();
 
     /**
      * 页面事件
      */
-    private final ProtectedUnPeekLiveData<CommonPageEvent> pageEvent =
-            new ProtectedUnPeekLiveData.Builder<CommonPageEvent>()
+    private final UnPeekLiveData<CommonPageEvent> pageEvent =
+            new UnPeekLiveData.Builder<CommonPageEvent>()
                     .setAllowNullValue(true)
                     .create();
-
 
     /**
      * 设置最初的初始化的State
@@ -48,7 +50,7 @@ public abstract class BaseModel<I extends IIntent, S extends IViewState> extends
      * 初始化数据
      * @param params 参数
      */
-    abstract void initData(Bundle params);
+    public abstract void initData(Bundle params);
 
     /**
      * 处理意图
@@ -56,8 +58,8 @@ public abstract class BaseModel<I extends IIntent, S extends IViewState> extends
     public void processor(I intent){ }
 
     public void bindView(IntentView intentView) {
-        viewState.observe(intentView, intentView::render);
-        pageEvent.observe(intentView.getIdentity(),intentView,intentView::handlePageEvent);
+        viewState.observeSticky(intentView, intentView::render);
+        pageEvent.observe(intentView,intentView::handlePageEvent);
         postState(state());
     }
 
@@ -104,7 +106,7 @@ public abstract class BaseModel<I extends IIntent, S extends IViewState> extends
      * 显示loading
      * @param message loading信息
      */
-    public void showLoading(String message){
+    protected void showLoading(String message){
         postEvent(new CommonPageEvent.ShowLoading(message));
     }
     protected void hideLoading(){

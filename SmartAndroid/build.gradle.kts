@@ -54,6 +54,7 @@ dependencies {
     api(AndroidX.Lifecycle.viewModelKtx)
     api(AndroidX.Lifecycle.viewModelSavedState)
     api(AndroidX.Lifecycle.commonJava8)
+    api(ThirdPart.kunminx.unpeekLivedata)
     testImplementation(Testing.jUnit)
     androidTestImplementation(Testing.androidJunit)
     androidTestImplementation(Testing.espresso)

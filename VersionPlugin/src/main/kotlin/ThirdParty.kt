@@ -46,7 +46,7 @@ object ThirdPart {
 
     // 
     object kunminx {
-        const val unpeekLivedata = "com.kunminx.archi:unpeek-livedata:4.4.1-beta1"
+        const val unpeekLivedata = "com.kunminx.arch:unpeek-livedata:7.2.0-beta1"
         const val smoothNavigation = "com.kunminx.archi:smooth-navigation:3.3.2-beta5"
         const val strictDatabinding = "com.kunminx.archi:strict-databinding:3.6.2-beta1"
         const val domain = "com.kunminx.archi:domain:1.1.0"
