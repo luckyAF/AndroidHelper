@@ -5,7 +5,6 @@ plugins {
     id("com.luckyaf.plugin") apply false
     id("maven-publish")
 }
-group="com.github.luckyaf"
 
 android{
     compileSdk = BuildConfig.compileSdkVersion
