@@ -45,7 +45,7 @@ public class CommonBindingAdapter {
                 System.arraycopy(mHits, 1, mHits, 0, mHits.length - 1);
                 mHits[mHits.length - 1] = SystemClock.uptimeMillis();
                 if (mHits[0] >= (SystemClock.uptimeMillis() - 1000)) {
-                    System.arraycopy(new long[multipleClickSize], 0, mHits, 0, mHits.length);
+                    System.arraycopy(new long[multipleClickSize], 0, mHits, 0, mHits.length-1);
                     clickListener.onClick(v);
                 }
             }
