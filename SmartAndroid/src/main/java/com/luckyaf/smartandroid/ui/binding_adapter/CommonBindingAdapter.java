@@ -33,6 +33,27 @@ public class CommonBindingAdapter {
             }
         });
     }
+    @BindingAdapter({"android:MultipleClick","android:multipleClickSize"})
+    public static void setMultipleClick(View view,
+                                        final View.OnClickListener clickListener,
+                                        int multipleClickSize
+                                        ) {
+        final long[] mHits = new long[multipleClickSize];
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.arraycopy(mHits, 1, mHits, 0, mHits.length - 1);
+                mHits[mHits.length - 1] = SystemClock.uptimeMillis();
+                if (mHits[0] >= (SystemClock.uptimeMillis() - 1000)) {
+                    System.arraycopy(new long[multipleClickSize], 0, mHits, 0, mHits.length);
+                    clickListener.onClick(v);
+                }
+            }
+        });
+    }
+
+
+
 
 
 }
