@@ -36,7 +36,7 @@ public interface IntentView  extends LifecycleOwner {
      *
      * @param state 页面数据
      */
-    void render(Object state);
+    default void render(IViewState state){};
 
 
     /**
@@ -44,15 +44,7 @@ public interface IntentView  extends LifecycleOwner {
      * 比如跳转Activity,显示dialog,
      * @param event 页面
      */
-    void handlePageEvent(CommonPageEvent event);
-
-    /**
-     *
-     * System.identityHashCode(fragment.getViewModelStore());
-     * @return 返回 页面特征
-     */
-    int getIdentity();
-
+    default void handlePageEvent(CommonPageEvent event){};
 
 
 
