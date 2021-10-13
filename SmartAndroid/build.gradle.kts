@@ -2,7 +2,6 @@ plugins {
     id("com.android.library")
     kotlin("android")
     kotlin("kapt")
-    kotlin("android.extensions")
     id("com.luckyaf.plugin") apply false
     id("maven-publish")
 }
@@ -36,16 +35,18 @@ dependencies {
     androidTestImplementation(Testing.espresso)
 
     api(AndroidX.appcompat)
+    api(Google.material)
     api(AndroidX.Lifecycle.runtime)
     api(AndroidX.Lifecycle.commonJava8)
     api(AndroidX.Lifecycle.viewModel)
+    api(AndroidX.Lifecycle.viewModelKtx)
     api(AndroidX.Lifecycle.livedata)
+    api(AndroidX.Lifecycle.liveDataKtx)
     api(AndroidX.recyclerView)
     api(AndroidX.Navigation.runtime)
+    api(AndroidX.Navigation.ui)
     api(AndroidX.Navigation.fragment)
+    api(AndroidX.Navigation.fragmentKtx)
     api(ThirdPart.kunminx.unpeekLivedata)
-//    api(ThirdPart.kunminx.smoothNavigation)
-    api(ThirdPart.kunminx.strictDatabinding)
-
 
 }
