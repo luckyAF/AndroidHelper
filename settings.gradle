@@ -9,5 +9,4 @@ dependencyResolutionManagement {
 }
 include ':app'
 rootProject.name = "AndroidHelper"
-includeBuild("VersionPlugin")
 include ':SmartAndroid'
