@@ -1,4 +1,4 @@
-package com.luckyaf.smartandroid.ui.page;
+package com.luckyaf.smartandroid.mvvm;
 
 /**
  * 类描述：
@@ -20,7 +20,7 @@ import androidx.lifecycle.ViewModel;
  * <p>
  * 如果这样说还不理解的话，详见 https://xiaozhuanlan.com/topic/9816742350 和 https://xiaozhuanlan.com/topic/2356748910
  * <p>
- * Create by KunMinX at 20/4/18
+ * @author  by KunMinX at 20/4/18
  */
 public class DataBindingConfig {
 
@@ -30,7 +30,7 @@ public class DataBindingConfig {
 
     private final ViewModel stateViewModel;
 
-    private final SparseArray bindingParams = new SparseArray();
+    private final SparseArray<Object> bindingParams = new SparseArray();
 
     public DataBindingConfig(@NonNull Integer layout,
                              @NonNull Integer vmVariableId,
@@ -52,7 +52,7 @@ public class DataBindingConfig {
         return stateViewModel;
     }
 
-    public SparseArray getBindingParams() {
+    public SparseArray<Object> getBindingParams() {
         return bindingParams;
     }
 

@@ -35,17 +35,6 @@ android {
 
 dependencies {
     implementation(project(mapOf("path" to ":SmartAndroid")))
-    implementation(BuildConfig.kt_stdlib)
-    implementation(AndroidX.coreKtx)
-    implementation(AndroidX.appcompat)
-    implementation(AndroidX.constraintlayout)
-    implementation(AndroidX.vectordrawable)
-    implementation(AndroidX.Lifecycle.liveDataKtx)
-    implementation(AndroidX.Lifecycle.viewModelKtx)
-    implementation(AndroidX.Navigation.fragment)
-    implementation(AndroidX.Navigation.ui)
-    implementation(Google.material)
-    implementation(Google.gson)
     testImplementation(Testing.jUnit)
     androidTestImplementation(Testing.androidJunit)
     androidTestImplementation(Testing.espresso)

@@ -1,6 +1,5 @@
 package com.luckyaf.smartandroid.mvi;
 
-import com.luckyaf.smartandroid.ui.page.BaseView;
 
 import java.util.Map;
 

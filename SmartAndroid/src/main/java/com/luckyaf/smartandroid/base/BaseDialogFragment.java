@@ -1,4 +1,4 @@
-package com.luckyaf.smartandroid.ui.page;
+package com.luckyaf.smartandroid.base;
 
 import android.app.Dialog;
 import android.content.Context;
