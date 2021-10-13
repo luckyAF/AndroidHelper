@@ -10,7 +10,7 @@ import androidx.databinding.BindingAdapter;
  *
  * @author Created by luckyAF on 2021/10/11
  */
-class CommonBindingAdapter {
+public class CommonBindingAdapter {
 
     @BindingAdapter({"android:onSingleClick", "android:clickable"})
     public static void onSingleClick(View view, View.OnClickListener clickListener,

@@ -17,7 +17,6 @@ android {
         versionCode =BuildConfig.versionCode
         versionName =BuildConfig.versionName
         testInstrumentationRunner =BuildConfig.testInstrumentationRunner
-
         multiDexEnabled = true
     }
 
