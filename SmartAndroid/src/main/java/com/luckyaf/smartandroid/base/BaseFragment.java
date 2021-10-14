@@ -2,14 +2,8 @@ package com.luckyaf.smartandroid.base;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-
 import com.luckyaf.smartandroid.R;
-
-import java.lang.ref.WeakReference;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -57,10 +51,6 @@ public abstract class BaseFragment extends Fragment {
         }
     }
 
-    /**
-     * 设置view
-     */
-    public abstract View doSetContentView();
 
     public void initData(Bundle bundle){
     }
@@ -71,12 +61,6 @@ public abstract class BaseFragment extends Fragment {
     public void initView(){
 
     }
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return doSetContentView();
-    }
-
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
