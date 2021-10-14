@@ -3,6 +3,7 @@ package com.luckyaf.androidhelper;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.luckyaf.androidhelper.databinding.ActivityMainBinding;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -10,7 +11,6 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.luckyaf.androidhelper.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 

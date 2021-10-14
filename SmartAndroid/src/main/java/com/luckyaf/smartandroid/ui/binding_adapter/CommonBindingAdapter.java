@@ -12,14 +12,8 @@ import androidx.databinding.BindingAdapter;
  */
 public class CommonBindingAdapter {
 
-    @BindingAdapter({"android:onSingleClick", "android:clickable"})
-    public static void onSingleClick(View view, View.OnClickListener clickListener,
-                                  boolean clickable) {
-        setOnSingleClick(view, clickListener);
-        view.setClickable(clickable);
-    }
 
-    @BindingAdapter({"android:onSingleClick"})
+    @BindingAdapter(value={"onSingleClick"})
     public static void setOnSingleClick(View view, final View.OnClickListener clickListener) {
         final long[] mHits = new long[2];
         view.setOnClickListener(new View.OnClickListener() {
@@ -33,11 +27,17 @@ public class CommonBindingAdapter {
             }
         });
     }
-    @BindingAdapter({"onMultipleClick","multipleClickSize"})
-    public static void setMultipleClick(View view,
-                                        final View.OnClickListener clickListener,
-                                        int multipleClickSize
+    @BindingAdapter(value = {"onMultipleClick"})
+    public static void setOnMultipleClick(View view,
+                                        final View.OnClickListener clickListener
                                         ) {
+        setOnMultipleClick(view,clickListener,2);
+    }
+    @BindingAdapter(value = {"onMultipleClick","multipleClickSize"})
+    public static void setOnMultipleClick(View view,
+                                          final View.OnClickListener clickListener,
+                                          int multipleClickSize
+                                          ) {
         final long[] mHits = new long[multipleClickSize];
         view.setOnClickListener(new View.OnClickListener() {
             @Override
