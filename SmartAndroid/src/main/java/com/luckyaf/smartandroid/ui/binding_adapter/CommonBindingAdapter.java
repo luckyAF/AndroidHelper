@@ -52,6 +52,26 @@ public class CommonBindingAdapter {
         });
     }
 
+    @BindingAdapter(value = {"isVisible"})
+    public static void setViewVisible(View view,
+                                          boolean visible
+    ) {
+        if (visible) {
+            view.setVisibility(View.VISIBLE);
+        } else {
+            view.setVisibility(View.INVISIBLE);
+        }
+    }
+    @BindingAdapter(value = {"isGone"})
+    public static void setViewGone(View view,
+                                          boolean gone) {
+        if (gone) {
+            view.setVisibility(View.GONE);
+        } else {
+            view.setVisibility(View.VISIBLE);
+        }
+    }
+
 
 
 

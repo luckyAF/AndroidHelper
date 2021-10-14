@@ -1,6 +1,9 @@
 package com.luckyaf.smartandroid.extension
 
+import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.luckyaf.smartandroid.mvi.BaseModel
 import kotlinx.coroutines.Dispatchers
@@ -13,10 +16,4 @@ import kotlinx.coroutines.withContext
  *
  */
 
-fun ViewModel.runOnIO(block: () -> Unit){
-    viewModelScope.launch {
-        withContext(Dispatchers.IO) {
-            block()
-        }
-    }
-}
+

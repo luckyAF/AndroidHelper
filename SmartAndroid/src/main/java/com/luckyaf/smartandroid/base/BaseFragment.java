@@ -18,7 +18,7 @@ import androidx.fragment.app.FragmentTransaction;
  */
 @SuppressWarnings("unused")
 public abstract class BaseFragment extends Fragment {
-    protected String tag = this.getClass().getName();
+    protected final String TAG = this.getClass().getName();
     private static final String STATE_SAVE_IS_HIDDEN = "STATE_SAVE_IS_HIDDEN";
     private static final String KEY_SAVE_BUNDLE = "key_fragment_save_bundle";
     private Bundle savedBundle;

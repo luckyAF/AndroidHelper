@@ -27,7 +27,7 @@ import androidx.fragment.app.FragmentManager;
 @SuppressWarnings("unused")
 public abstract class BaseDialogFragment extends DialogFragment {
 
-    public   String TAG = getClass().getSimpleName();
+    public final   String TAG = getClass().getSimpleName();
     private static final float DEFAULT_DIM_AMOUNT = 0.2F;
 
     /**
@@ -36,6 +36,10 @@ public abstract class BaseDialogFragment extends DialogFragment {
      */
     protected abstract int getLayoutRes();
 
+    /**
+     * 绑定View
+     * @param view view
+     */
     protected abstract void bindView(View view);
 
 
