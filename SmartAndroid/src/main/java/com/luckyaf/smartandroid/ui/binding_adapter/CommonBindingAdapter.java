@@ -33,7 +33,7 @@ public class CommonBindingAdapter {
             }
         });
     }
-    @BindingAdapter({"android:MultipleClick","android:multipleClickSize"})
+    @BindingAdapter({"onMultipleClick","multipleClickSize"})
     public static void setMultipleClick(View view,
                                         final View.OnClickListener clickListener,
                                         int multipleClickSize
