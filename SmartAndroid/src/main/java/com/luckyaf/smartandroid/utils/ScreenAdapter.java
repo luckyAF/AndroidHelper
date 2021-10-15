@@ -11,9 +11,13 @@ import android.app.Application;
 import android.content.ComponentCallbacks;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
+
+import java.lang.reflect.Field;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -275,6 +279,55 @@ public final class ScreenAdapter {
         final DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         displayMetrics.xdpi = targetXdpi;
     }
+
+
+    private static boolean isInitMiui = false;
+    private static Field mTmpMetricsField;
+
+    /**
+     * Adapt for the horizontal screen, and call it in [android.app.Activity.getResources].
+     */
+    public static Resources adaptWidth(Resources resources) {
+        DisplayMetrics dm = getDisplayMetrics(resources);
+        dm.xdpi = sMatchInfo.appXdpi;
+        return resources;
+    }
+    private static DisplayMetrics getDisplayMetrics(Resources resources) {
+        DisplayMetrics miuiDisplayMetrics = getMiuiTmpMetrics(resources);
+        if (miuiDisplayMetrics == null) {
+            return resources.getDisplayMetrics();
+        }
+        return miuiDisplayMetrics;
+    }
+    private static DisplayMetrics getMiuiTmpMetrics(Resources resources) {
+        if (!isInitMiui) {
+            DisplayMetrics ret = null;
+            String simpleName = resources.getClass().getSimpleName();
+            if ("MiuiResources".equals(simpleName) || "XResources".equals(simpleName)) {
+                try {
+                    //noinspection JavaReflectionMemberAccess
+                    mTmpMetricsField = Resources.class.getDeclaredField("mTmpMetrics");
+                    mTmpMetricsField.setAccessible(true);
+                    ret = (DisplayMetrics) mTmpMetricsField.get(resources);
+                } catch (Exception e) {
+                    Log.e("AdaptScreenUtils", "no field of mTmpMetrics in resources.");
+                }
+            }
+            isInitMiui = true;
+            return ret;
+        }
+        if (mTmpMetricsField == null) {
+            return null;
+        }
+        try {
+            return (DisplayMetrics) mTmpMetricsField.get(resources);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+
+
 
     /**
      * 适配信息
