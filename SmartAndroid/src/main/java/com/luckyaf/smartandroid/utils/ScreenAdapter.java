@@ -40,8 +40,12 @@ public final class ScreenAdapter {
     public static final int MATCH_UNIT_DP = 0;
     public static final int MATCH_UNIT_PT = 1;
 
-    // 适配信息
+    // 原适配信息
+    //
     private static MatchInfo sMatchInfo;
+
+    private static float sXdpi;
+
     // Activity 的生命周期监测
     private static Application.ActivityLifecycleCallbacks mActivityLifecycleCallback;
 
@@ -65,6 +69,7 @@ public final class ScreenAdapter {
             sMatchInfo.setAppDensityDpi(displayMetrics.densityDpi);
             sMatchInfo.setAppScaledDensity(displayMetrics.scaledDensity);
             sMatchInfo.setAppXdpi(displayMetrics.xdpi);
+            sXdpi = displayMetrics.xdpi;
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
             // 添加字体变化的监听
@@ -255,6 +260,15 @@ public final class ScreenAdapter {
         displayMetrics.density = targetDensity;
         displayMetrics.densityDpi = targetDensityDpi;
         displayMetrics.scaledDensity = targetScaledDensity;
+        if (base == MATCH_BASE_WIDTH) {
+            sXdpi = sMatchInfo.getScreenWidth()* sMatchInfo.appXdpi / designSize;
+
+        } else if (base == MATCH_BASE_HEIGHT) {
+            sXdpi = sMatchInfo.getScreenHeight() * sMatchInfo.appXdpi / designSize;
+        } else {
+            sXdpi = sMatchInfo.getScreenWidth() * 1f / designSize;
+        }
+
     }
 
     /**
@@ -278,6 +292,9 @@ public final class ScreenAdapter {
         }
         final DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         displayMetrics.xdpi = targetXdpi;
+        if(targetXdpi!=sXdpi){
+            sXdpi = targetXdpi;
+        }
     }
 
 
@@ -287,9 +304,9 @@ public final class ScreenAdapter {
     /**
      * Adapt for the horizontal screen, and call it in [android.app.Activity.getResources].
      */
-    public static Resources adaptWidth(Resources resources) {
+    public static Resources adaptResources(Resources resources) {
         DisplayMetrics dm = getDisplayMetrics(resources);
-        dm.xdpi = sMatchInfo.appXdpi;
+        dm.xdpi = sXdpi;
         return resources;
     }
     private static DisplayMetrics getDisplayMetrics(Resources resources) {
