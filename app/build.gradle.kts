@@ -34,6 +34,7 @@ android {
 
 dependencies {
     implementation(project(mapOf("path" to ":SmartAndroid")))
+    implementation("com.github.lygttpod:SuperTextView:2.4.6")
     testImplementation(Testing.jUnit)
     androidTestImplementation(Testing.androidJunit)
     androidTestImplementation(Testing.espresso)

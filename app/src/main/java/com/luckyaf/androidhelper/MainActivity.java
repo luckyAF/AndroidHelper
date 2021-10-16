@@ -1,9 +1,12 @@
 package com.luckyaf.androidhelper;
 
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.luckyaf.androidhelper.databinding.ActivityMainBinding;
+import com.luckyaf.smartandroid.utils.ScreenAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -19,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Configuration mConfiguration = this.getResources().getConfiguration();
+        updateScreenAdapter(mConfiguration);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -33,5 +37,31 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
+
+
+
+    private void updateScreenAdapter(Configuration config) {
+        if (config.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            ScreenAdapter.match(this, 866f);
+        } else {
+            ScreenAdapter.match(this, 480f);
+        }
+    }
+
+    @Override
+    public Resources getResources() {
+        return ScreenAdapter.adaptResources(super.getResources());
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        Configuration mConfiguration = this.getResources().getConfiguration();
+        int oldScreenWidth = mConfiguration.screenWidthDp;
+        if(newConfig.screenWidthDp != oldScreenWidth){
+            updateScreenAdapter(newConfig);
+        }
+        super.onConfigurationChanged(newConfig);
+    }
+
 
 }
