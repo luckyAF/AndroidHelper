@@ -32,8 +32,8 @@ public final class ScreenAdapter {
     /**
      * 屏幕适配的基准
      */
-    public static final int MATCH_BASE_WIDTH = 0;
-    public static final int MATCH_BASE_HEIGHT = 1;
+    public static final int MATCH_SHORT_SIDE = 0;
+    public static final int MATCH_LONG_SIDE = 1;
     /**
      * 适配单位
      */
@@ -43,8 +43,6 @@ public final class ScreenAdapter {
     // 原适配信息
     //
     private static MatchInfo sMatchInfo;
-
-    private static float sXdpi;
 
     // Activity 的生命周期监测
     private static Application.ActivityLifecycleCallbacks mActivityLifecycleCallback;
@@ -75,7 +73,6 @@ public final class ScreenAdapter {
             sMatchInfo.setAppDensityDpi(displayMetrics.densityDpi);
             sMatchInfo.setAppScaledDensity(displayMetrics.scaledDensity);
             sMatchInfo.setAppXdpi(displayMetrics.xdpi);
-            sXdpi = displayMetrics.xdpi;
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
             // 添加字体变化的监听
@@ -87,7 +84,6 @@ public final class ScreenAdapter {
                         sMatchInfo.setAppScaledDensity(application.getResources().getDisplayMetrics().scaledDensity);
                     }
                 }
-
                 @Override
                 public void onLowMemory() {
                 }
@@ -165,7 +161,7 @@ public final class ScreenAdapter {
      * @param designSize
      */
     public static void match(@NonNull final Context context, final float designSize) {
-        match(context, designSize, MATCH_BASE_WIDTH, MATCH_UNIT_DP);
+        match(context, designSize, MATCH_SHORT_SIDE, MATCH_UNIT_DP);
     }
 
     /**
@@ -253,9 +249,9 @@ public final class ScreenAdapter {
      */
     private static void matchByDP(@NonNull final Context context, final float designSize, int base) {
         final float targetDensity;
-        if (base == MATCH_BASE_WIDTH) {
+        if (base == MATCH_SHORT_SIDE) {
             targetDensity = sMatchInfo.getScreenWidth() * 1f / designSize;
-        } else if (base == MATCH_BASE_HEIGHT) {
+        } else if (base == MATCH_LONG_SIDE) {
             targetDensity = sMatchInfo.getScreenHeight() * 1f / designSize;
         } else {
             targetDensity = sMatchInfo.getScreenWidth() * 1f / designSize;
@@ -266,15 +262,6 @@ public final class ScreenAdapter {
         displayMetrics.density = targetDensity;
         displayMetrics.densityDpi = targetDensityDpi;
         displayMetrics.scaledDensity = targetScaledDensity;
-        if (base == MATCH_BASE_WIDTH) {
-            sXdpi = sMatchInfo.getScreenWidth()* sMatchInfo.appXdpi / designSize;
-
-        } else if (base == MATCH_BASE_HEIGHT) {
-            sXdpi = sMatchInfo.getScreenHeight() * sMatchInfo.appXdpi / designSize;
-        } else {
-            sXdpi = sMatchInfo.getScreenWidth() * 1f / designSize;
-        }
-
     }
 
     /**
@@ -289,18 +276,16 @@ public final class ScreenAdapter {
      */
     private static void matchByPT(@NonNull final Context context, final float designSize, int base) {
         final float targetXdpi;
-        if (base == MATCH_BASE_WIDTH) {
+        if (base == MATCH_SHORT_SIDE) {
             targetXdpi = sMatchInfo.getScreenWidth() * 72f / designSize;
-        } else if (base == MATCH_BASE_HEIGHT) {
+        } else if (base == MATCH_LONG_SIDE) {
             targetXdpi = sMatchInfo.getScreenHeight() * 72f / designSize;
         } else {
             targetXdpi = sMatchInfo.getScreenWidth() * 72f / designSize;
         }
         final DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         displayMetrics.xdpi = targetXdpi;
-        if(targetXdpi!=sXdpi){
-            sXdpi = targetXdpi;
-        }
+
     }
 
 
@@ -312,7 +297,6 @@ public final class ScreenAdapter {
      */
     public static Resources adaptResources(Resources resources) {
         DisplayMetrics dm = getDisplayMetrics(resources);
-        dm.xdpi = sXdpi;
         return resources;
     }
     private static DisplayMetrics getDisplayMetrics(Resources resources) {

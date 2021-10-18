@@ -13,7 +13,7 @@ class App extends BaseApplication {
     public void initializeConfig() {
         super.initializeConfig();
         ScreenAdapter.setup(this);
-        ScreenAdapter.register(this,480f, ScreenAdapter.MATCH_BASE_WIDTH, ScreenAdapter.MATCH_UNIT_DP);
+        ScreenAdapter.register(this,480f, ScreenAdapter.MATCH_SHORT_SIDE, ScreenAdapter.MATCH_UNIT_DP);
 
     }
 }
