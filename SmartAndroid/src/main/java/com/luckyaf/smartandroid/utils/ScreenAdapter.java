@@ -63,8 +63,14 @@ public final class ScreenAdapter {
         if (sMatchInfo == null) {
             // 记录系统的原始值
             sMatchInfo = new MatchInfo();
-            sMatchInfo.setScreenWidth(displayMetrics.widthPixels);
-            sMatchInfo.setScreenHeight(displayMetrics.heightPixels);
+            if(displayMetrics.widthPixels > displayMetrics.heightPixels){
+                // 长边为高 短边为宽
+                sMatchInfo.setScreenWidth(displayMetrics.heightPixels);
+                sMatchInfo.setScreenHeight(displayMetrics.widthPixels);
+            }else{
+                sMatchInfo.setScreenWidth(displayMetrics.widthPixels);
+                sMatchInfo.setScreenHeight(displayMetrics.heightPixels);
+            }
             sMatchInfo.setAppDensity(displayMetrics.density);
             sMatchInfo.setAppDensityDpi(displayMetrics.densityDpi);
             sMatchInfo.setAppScaledDensity(displayMetrics.scaledDensity);
