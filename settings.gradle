@@ -10,3 +10,4 @@ dependencyResolutionManagement {
 include ':app'
 rootProject.name = "AndroidHelper"
 include ':SmartAndroid'
+include ':SmartPrinter'
