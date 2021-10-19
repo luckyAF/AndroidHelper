@@ -1,5 +1,6 @@
 package com.luckyaf.smartandroid.extension
 
+import android.os.Build
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.KeyEvent
@@ -10,6 +11,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.OnLifecycleEvent
+import java.lang.Exception
+import java.lang.reflect.Method
 
 /**
  * 类描述：
@@ -17,6 +20,28 @@ import androidx.lifecycle.OnLifecycleEvent
  *
  */
 
+/**
+ * 禁止系统键盘
+ */
+fun EditText.disableSystemKeyboard() {
+    if(Build.VERSION.SDK_INT >= 21){
+        showSoftInputOnFocus = false
+    } else  {
+        try {
+            val cls = EditText::class.java
+            val setShowSoftInputOnFocus: Method =
+                cls.getMethod("setShowSoftInputOnFocus", Boolean::class.javaPrimitiveType)
+            setShowSoftInputOnFocus.isAccessible = true
+            setShowSoftInputOnFocus.invoke(this, false)
+        } catch (e: SecurityException) {
+            e.printStackTrace()
+        } catch (e: NoSuchMethodException) {
+            e.printStackTrace()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+}
 
 
 fun EditText.addEnterListener(block: () -> Unit) {

@@ -27,7 +27,7 @@ public abstract class BaseModel<I extends IIntent, S extends IViewState> extends
      */
     private final UnPeekLiveData<S> viewState =
             new UnPeekLiveData.Builder<S>()
-            .setAllowNullValue(true)
+            .setAllowNullValue(false)
             .create();
 
     /**
@@ -35,7 +35,7 @@ public abstract class BaseModel<I extends IIntent, S extends IViewState> extends
      */
     private final UnPeekLiveData<CommonPageEvent> pageEvent =
             new UnPeekLiveData.Builder<CommonPageEvent>()
-                    .setAllowNullValue(true)
+                    .setAllowNullValue(false)
                     .create();
 
     /**
@@ -50,7 +50,7 @@ public abstract class BaseModel<I extends IIntent, S extends IViewState> extends
      * 初始化数据
      * @param params 参数
      */
-    public abstract void initData(Bundle params);
+    public abstract void initData(@NonNull Bundle params);
 
     /**
      * 处理意图
@@ -91,7 +91,7 @@ public abstract class BaseModel<I extends IIntent, S extends IViewState> extends
      * 发送事件
      * @param event 页面事件
      */
-    protected void postEvent(CommonPageEvent event){
+    protected void postEvent(@NonNull CommonPageEvent event){
         if(isMainThread()){
             pageEvent.setValue(event);
         }else{

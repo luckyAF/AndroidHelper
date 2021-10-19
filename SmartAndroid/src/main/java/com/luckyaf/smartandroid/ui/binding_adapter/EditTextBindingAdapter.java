@@ -3,6 +3,7 @@ package com.luckyaf.smartandroid.ui.binding_adapter;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import com.luckyaf.smartandroid.ui.binding_adapter.commond.BindingCommand;
 import androidx.databinding.BindingAdapter;
@@ -31,18 +32,21 @@ public class EditTextBindingAdapter {
 
     @BindingAdapter(value={"onEnterKeyDown"})
     public static void addEnterKeyListener(EditText editText, final BindingCommand<String> enterKeyDown) {
-        editText.setOnKeyListener((v, keyCode, event) -> {
+        editText.setOnEditorActionListener((v, actionId, event) ->{
             boolean result = false;
-            if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if (actionId == EditorInfo.IME_ACTION_SEND
+                    || actionId == EditorInfo.IME_ACTION_DONE
+                    || actionId == EditorInfo.IME_ACTION_SEARCH
+                    || actionId == EditorInfo.IME_ACTION_GO){
                 enterKeyDown.execute(editText.getText().toString());
-                result = true;
-            } else if (keyCode == KeyEvent.KEYCODE_DPAD_UP || keyCode == KeyEvent.KEYCODE_DPAD_DOWN
-                    || keyCode == KeyEvent.KEYCODE_DPAD_LEFT || keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
-                result = true;
-            } else if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_UP) {
-                result = true;
+                return true;
             }
-            return result;
+            if(event != null && KeyEvent.KEYCODE_ENTER == event.getKeyCode()
+                    && KeyEvent.ACTION_UP == event.getAction()){
+                enterKeyDown.execute(editText.getText().toString());
+                return true;
+            }
+            return  false;
         });
     }
 }
