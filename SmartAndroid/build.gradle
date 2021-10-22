@@ -52,6 +52,7 @@ dependencies {
     androidTestImplementation Testing.espresso
 
     api AndroidX.appcompat
+    api ThirdPart.androidUtilCode
     api Google.material
     api Lifecycle.runtime
     api Lifecycle.commonJava8

@@ -18,7 +18,7 @@ object ThirdPart {
     // walle
     const val walle = "com.meituan.android.walle:library:1.1.6"
 
-
+    const val androidUtilCode = "com.blankj:utilcodex:1.30.6"
 
     //rxjava
     const val rxjava2 = "io.reactivex.rxjava2:rxjava:2.2.14"
