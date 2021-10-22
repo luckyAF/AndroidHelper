@@ -2,7 +2,9 @@ package com.luckyaf.smartandroid;
 
 import android.app.Application;
 
+import com.luckyaf.smartandroid.config.DefaultLogStrategy;
 import com.luckyaf.smartandroid.config.DefaultToastStrategy;
+import com.luckyaf.smartandroid.config.ILogStrategy;
 import com.luckyaf.smartandroid.config.IToastStrategy;
 
 /**
@@ -36,6 +38,7 @@ public final class AppConfig {
 
     private final Application mApp;
     private IToastStrategy mToastStrategy;
+    private ILogStrategy mLogStrategy;
 
     public Application getApp() {
         return mApp;
@@ -44,16 +47,25 @@ public final class AppConfig {
     public IToastStrategy getToastStrategy() {
         return mToastStrategy;
     }
+    public ILogStrategy getLogStrategy() {
+        return mLogStrategy;
+    }
+
     public AppConfig setToastStrategy(IToastStrategy toastStrategy){
         mToastStrategy = toastStrategy;
         return this;
     }
 
-
+    public void setLogStrategy(ILogStrategy logStrategy) {
+        this.mLogStrategy = logStrategy;
+    }
 
     public void init(){
         if(mToastStrategy==null){
             mToastStrategy = new DefaultToastStrategy();
+        }
+        if(mLogStrategy==null){
+            mLogStrategy = new DefaultLogStrategy();
         }
         AppConfig.setInstance(this);
     }
