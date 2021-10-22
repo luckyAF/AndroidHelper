@@ -49,11 +49,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public Resources getResources() {
-        return ScreenAdapter.adaptResources(super.getResources());
-    }
-
-    @Override
     public void onConfigurationChanged(Configuration newConfig) {
         Configuration mConfiguration = this.getResources().getConfiguration();
         int oldScreenWidth = mConfiguration.screenWidthDp;
