@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.luckyaf.smartandroid.R;
-import com.luckyaf.smartandroid.action.KeyboardAction;
 import com.luckyaf.smartandroid.callback.OnActivityCallback;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
@@ -17,7 +16,7 @@ import androidx.core.app.ActivityOptionsCompat;
  * @author Created by luckyAF on 2021/7/11
  */
 @SuppressWarnings("unused")
-public abstract class BaseActivity extends AppCompatActivity implements KeyboardAction {
+public abstract class BaseActivity extends AppCompatActivity{
 
 
     private Bundle savedBundle;
