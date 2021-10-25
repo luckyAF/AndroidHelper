@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
  *
  * @author Created by luckyAF on 2021/10/25
  */
+@SuppressWarnings("unused")
 public class LayoutManagers {
     protected LayoutManagers() {
     }
@@ -78,7 +79,7 @@ public class LayoutManagers {
     /**
      * A {@link StaggeredGridLayoutManager} with the given spanCount and orientation.
      */
-    public static LayoutManagerFactory staggeredGrid(final int spanCount, @me.tatarka.bindingcollectionadapter2.LayoutManagers.Orientation final int orientation) {
+    public static LayoutManagerFactory staggeredGrid(final int spanCount, @LayoutManagers.Orientation final int orientation) {
         return new LayoutManagerFactory() {
             @Override
             public RecyclerView.LayoutManager create(RecyclerView recyclerView) {
