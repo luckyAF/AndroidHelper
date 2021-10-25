@@ -1,5 +1,7 @@
 package com.luckyaf.smartandroid.ui.binding_adapter;
 
+import com.luckyaf.smartandroid.ui.binding_adapter.helper.LayoutManagers;
+
 import java.util.List;
 
 import androidx.databinding.BindingAdapter;
@@ -50,6 +52,11 @@ public class RecyclerViewBindingAdapter {
                 }
             });
         }
+    }
+
+    @BindingAdapter(value = {"layoutManager"})
+    public static void setLayoutManager(RecyclerView recyclerView, LayoutManagers.LayoutManagerFactory layoutManagerFactory) {
+        recyclerView.setLayoutManager(layoutManagerFactory.create(recyclerView));
     }
 
 

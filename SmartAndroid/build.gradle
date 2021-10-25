@@ -22,6 +22,7 @@ afterEvaluate {
     }
 }
 
+
 android{
     compileSdk  BuildConfig.compileSdkVersion
     defaultConfig {
@@ -50,6 +51,8 @@ dependencies {
     androidTestImplementation Testing.androidJunit
     androidTestImplementation Testing.espresso
 // recyclerView的Databinding套装
+    //api 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:2.2.0'
+   // api 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:2.2.0'
     api AndroidX.appcompat
     api ThirdPart.androidUtilCode
     api Google.material
