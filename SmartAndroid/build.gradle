@@ -22,7 +22,6 @@ afterEvaluate {
     }
 }
 
-
 android{
     compileSdk  BuildConfig.compileSdkVersion
     defaultConfig {
@@ -50,7 +49,7 @@ dependencies {
     testImplementation Testing.jUnit
     androidTestImplementation Testing.androidJunit
     androidTestImplementation Testing.espresso
-
+// recyclerView的Databinding套装
     api AndroidX.appcompat
     api ThirdPart.androidUtilCode
     api Google.material
