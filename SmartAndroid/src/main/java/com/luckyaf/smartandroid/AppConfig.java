@@ -38,6 +38,7 @@ public final class AppConfig {
 
     private final Application mApp;
     private IToastStrategy mToastStrategy;
+    private boolean mLogEnable;
     private ILogStrategy mLogStrategy;
 
     public Application getApp() {
@@ -56,6 +57,15 @@ public final class AppConfig {
         return this;
     }
 
+    public AppConfig setLogEnable(boolean logEnable) {
+        this.mLogEnable = logEnable;
+        return this;
+    }
+
+    public boolean isLogEnable() {
+        return mLogEnable;
+    }
+
     public void setLogStrategy(ILogStrategy logStrategy) {
         this.mLogStrategy = logStrategy;
     }
@@ -65,7 +75,7 @@ public final class AppConfig {
             mToastStrategy = new DefaultToastStrategy();
         }
         if(mLogStrategy==null){
-            mLogStrategy = new DefaultLogStrategy();
+            mLogStrategy = new DefaultLogStrategy(mApp);
         }
         AppConfig.setInstance(this);
     }

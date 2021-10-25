@@ -1,5 +1,6 @@
 package com.luckyaf.smartandroid.config;
 
+import android.app.Application;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -9,7 +10,6 @@ import com.blankj.utilcode.BuildConfig;
 import com.blankj.utilcode.constant.TimeConstants;
 import com.blankj.utilcode.util.FileIOUtils;
 import com.blankj.utilcode.util.TimeUtils;
-import com.luckyaf.smartandroid.SmartAndroid;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,14 +24,15 @@ import androidx.annotation.NonNull;
  * @author Created by luckyAF on 2021/10/22
  */
 public class DefaultLogStrategy implements ILogStrategy{
-    private final String logPath = SmartAndroid.get().getApp().getExternalCacheDir() + "/log/";
+    private final String logPath;
 
     private final static String LOG_MESSAGE = "log_message";
     private final static String LOG_TYPE_NAME = "log_type_name";
     private final HandlerThread handlerThread;
     private final Handler handler;
 
-    public DefaultLogStrategy(){
+    public DefaultLogStrategy(Application app){
+        logPath = app.getExternalCacheDir() + "/log/";
         handlerThread = new HandlerThread("handle_app_log");
         handlerThread.start();
         handler = new Handler(handlerThread.getLooper()){
