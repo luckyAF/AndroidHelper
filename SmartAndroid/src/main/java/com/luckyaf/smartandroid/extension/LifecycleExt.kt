@@ -9,11 +9,22 @@ import androidx.lifecycle.*
  */
 
 
-fun Lifecycle.OnDestroy(block: () -> Unit) {
+fun Lifecycle.OnStop(block: () -> Unit):Lifecycle {
+    addObserver(object : LifecycleObserver {
+        @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+        fun onStop() {
+            block.invoke()
+        }
+    })
+    return this
+}
+
+fun Lifecycle.OnDestroy(block: () -> Unit):Lifecycle  {
     addObserver(object : LifecycleObserver {
         @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
         fun onDestroy() {
             block.invoke()
         }
     })
+    return this
 }

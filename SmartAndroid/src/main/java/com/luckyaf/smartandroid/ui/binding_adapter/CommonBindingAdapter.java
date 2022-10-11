@@ -74,6 +74,18 @@ public class CommonBindingAdapter {
 
 
 
+    @BindingAdapter({"requestFocus"})
+    public static void requestFocusCommand(View view, final boolean needRequestFocus) {
+        if (needRequestFocus) {
+            view.setFocusableInTouchMode(true);
+            view.requestFocus();
+        } else {
+            view.clearFocus();
+        }
+    }
+
+
+
 
 
 }

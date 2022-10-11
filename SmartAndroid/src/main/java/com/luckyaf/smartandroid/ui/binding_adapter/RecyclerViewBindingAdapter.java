@@ -1,5 +1,7 @@
 package com.luckyaf.smartandroid.ui.binding_adapter;
 
+import android.util.Log;
+
 import com.luckyaf.smartandroid.ui.binding_adapter.helper.LayoutManagers;
 
 import java.util.List;
@@ -54,10 +56,24 @@ public class RecyclerViewBindingAdapter {
         }
     }
 
-    @BindingAdapter(value = {"layoutManager"})
-    public static void setLayoutManager(RecyclerView recyclerView, LayoutManagers.LayoutManagerFactory layoutManagerFactory) {
-        recyclerView.setLayoutManager(layoutManagerFactory.create(recyclerView));
+
+
+    @BindingAdapter(value = {"scrollToPosition"}, requireAll = false)
+    public static void scrollToPosition(RecyclerView recyclerView,
+                                        int position) {
+
+        if (recyclerView.getAdapter() != null && recyclerView.getLayoutManager()!=null) {
+            if (position >= 0 && position < recyclerView.getAdapter().getItemCount()) {
+                recyclerView.getLayoutManager().scrollToPosition(position);
+                Log.d("RecyclerViewBinding","scrollToPosition " + position);
+            }
+        }
     }
 
+    @BindingAdapter(value = {"layoutManagerFactory"})
+    public static void setLayoutManager(RecyclerView recyclerView, LayoutManagers.LayoutManagerFactory layoutManagerFactory) {
+        Log.d("RecyclerViewBinding","setLayoutManager ");
+        recyclerView.setLayoutManager(layoutManagerFactory.create(recyclerView));
+    }
 
 }

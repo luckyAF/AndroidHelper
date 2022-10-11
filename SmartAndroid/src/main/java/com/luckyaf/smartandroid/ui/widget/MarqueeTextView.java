@@ -28,6 +28,11 @@ public class MarqueeTextView extends AppCompatTextView {
     }
     private void initMarquee(){
         setEllipsize(TextUtils.TruncateAt.MARQUEE);
+        setSingleLine(true);
+        setSelected(true);
+        setFocusable(true);
+        //setFocusableInTouchMode(true);
+        setEllipsize(TextUtils.TruncateAt.MARQUEE);
 
     }
 

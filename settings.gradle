@@ -7,6 +7,7 @@ dependencyResolutionManagement {
         maven { url 'https://jitpack.io' }
     }
 }
+
 include ':app'
 rootProject.name = "AndroidHelper"
 include ':SmartAndroid'

@@ -45,6 +45,8 @@ public class DefaultLogStrategy implements ILogStrategy{
         };
     }
 
+
+
     @Override
     public void print(String tag, String message) {
         Log.i(tag,message);

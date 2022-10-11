@@ -1,4 +1,3 @@
-import kunminx
 plugins {
     id "com.android.library"
     id "kotlin-android"
@@ -47,6 +46,7 @@ android{
 
 dependencies {
 
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
     testImplementation Testing.jUnit
     androidTestImplementation Testing.androidJunit
     androidTestImplementation Testing.espresso
@@ -54,6 +54,7 @@ dependencies {
     //api 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:2.2.0'
    // api 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:2.2.0'
     api AndroidX.appcompat
+    api AndroidX.coordinatorlayout
     api ThirdPart.androidUtilCode
     api Google.material
     api Lifecycle.runtime
@@ -67,6 +68,6 @@ dependencies {
     api Navigation.ui
     api Navigation.fragment
     api Navigation.fragmentKtx
-    api kunminx.unpeekLivedata
+    //api kunminx.unpeekLivedata  自己copy方便修改
 
 }

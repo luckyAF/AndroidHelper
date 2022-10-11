@@ -13,8 +13,6 @@ import com.luckyaf.smartandroid.entity.CommonMessageBean;
  */
 public class SmartAndroid implements IToastStrategy , ILogStrategy {
 
-
-
     private static class SmartAndroidHolder {
         private static final SmartAndroid SMART_ANDROID = new SmartAndroid();
     }
@@ -26,50 +24,50 @@ public class SmartAndroid implements IToastStrategy , ILogStrategy {
 
 
     public Application getApp(){
-        return AppConfig.getInstance().getApp();
+        return SmartAndroidConfig.getInstance().getApp();
     }
 
     @Override
     public void showShort(CommonMessageBean bean) {
-        AppConfig.getInstance().getToastStrategy().showShort(bean);
+        SmartAndroidConfig.getInstance().getToastStrategy().showShort(bean);
     }
     @Override
     public void showShort(String message) {
-        AppConfig.getInstance().getToastStrategy().showShort(message);
+        SmartAndroidConfig.getInstance().getToastStrategy().showShort(message);
 
     }
 
     @Override
     public void showLong(CommonMessageBean bean) {
-        AppConfig.getInstance().getToastStrategy().showLong(bean);
+        SmartAndroidConfig.getInstance().getToastStrategy().showLong(bean);
 
     }
 
     @Override
     public void showLong(String message) {
-        AppConfig.getInstance().getToastStrategy().showLong(message);
+        SmartAndroidConfig.getInstance().getToastStrategy().showLong(message);
     }
 
     @Override
     public void print(String tag, String message) {
-        AppConfig.getInstance().getLogStrategy().print(tag,message);
+        SmartAndroidConfig.getInstance().getLogStrategy().print(tag,message);
     }
 
     @Override
     public void log(String type, String info) {
-        AppConfig.getInstance().getLogStrategy().log(type,info);
+        SmartAndroidConfig.getInstance().getLogStrategy().log(type,info);
 
     }
 
     @Override
     public void clearLog() {
-        AppConfig.getInstance().getLogStrategy().clearLog();
+        SmartAndroidConfig.getInstance().getLogStrategy().clearLog();
 
     }
 
     @Override
     public void clearLogByType(String type, int saveDay) {
-        AppConfig.getInstance().getLogStrategy().clearLogByType(type,saveDay);
+        SmartAndroidConfig.getInstance().getLogStrategy().clearLogByType(type,saveDay);
 
     }
 }

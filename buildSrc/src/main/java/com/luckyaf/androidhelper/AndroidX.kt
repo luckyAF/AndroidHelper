@@ -12,6 +12,8 @@ object AndroidX {
      */
     const val appcompat = "androidx.appcompat:appcompat:1.2.0"
     const val constraintlayout = "androidx.constraintlayout:constraintlayout:1.1.3"
+    const val coordinatorlayout = "androidx.coordinatorlayout:coordinatorlayout:1.1.3"
+
     const val cardview = "androidx.cardview:cardview:1.0.0"
     const val recyclerView = "androidx.recyclerview:recyclerview:1.2.0-alpha03"
     const val vectordrawable = "androidx.vectordrawable:vectordrawable:1.1.0"

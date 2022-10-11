@@ -71,6 +71,7 @@ public abstract class DataBindingActivity extends BaseActivity {
 
     //如果这样说还不理解的话，详见 https://xiaozhuanlan.com/topic/6257931840
 
+    @Override
     protected <T extends ViewModel> T getActivityScopeViewModel(@NonNull Class<T> modelClass) {
         if (mActivityProvider == null) {
             mActivityProvider = new ViewModelProvider(this);
@@ -78,6 +79,7 @@ public abstract class DataBindingActivity extends BaseActivity {
         return mActivityProvider.get(modelClass);
     }
 
+    @Override
     protected <T extends ViewModel> T getApplicationScopeViewModel(@NonNull Class<T> modelClass) {
         if (mApplicationProvider == null) {
             mApplicationProvider = new ViewModelProvider((BaseApplication) this.getApplicationContext());

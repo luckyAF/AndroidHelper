@@ -7,6 +7,7 @@ package com.luckyaf.smartandroid.config;
  */
 public interface ILogStrategy {
 
+
     /**
      * 打印日志
      */
